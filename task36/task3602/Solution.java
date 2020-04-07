@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
+import java.util.List;
 
 /*
 Найти класс по описанию
@@ -18,20 +19,26 @@ public class Solution {
         Class<?>[] classes = Collections.class.getDeclaredClasses();
 
         for (Class<?> c : classes) {
-            try{
-                if (Modifier.isStatic(c.getModifiers()) && Modifier.isPrivate(c.getModifiers())){
-                    Method method = c.getMethod("get");
+            try {
+                if (isImplement(c) && Modifier.isStatic(c.getModifiers()) && Modifier.isPrivate(c.getModifiers())) {
+                    Method method = c.getMethod("get", int.class);
                     method.setAccessible(true);
-                    Constructor<?> constructor = c.getDeclaredConstructor();
+                    Constructor constructor = c.getDeclaredConstructor();
                     constructor.setAccessible(true);
-                    method.invoke(constructor.newInstance(),"Hello");
+                    if (constructor != null)
+                        method.invoke(constructor.newInstance(), 0);
                 }
-            }catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                e.printStackTrace();
-            }catch (IndexOutOfBoundsException e){
-                return c;
+            }
+            catch (NoSuchMethodException | IllegalAccessException | InstantiationException e) {}
+            catch (InvocationTargetException e) {
+                if (e.getCause().toString().contains("IndexOutOfBoundsException"))
+                    return c;
             }
         }
         return null;
+    }
+
+    public static boolean isImplement(Class<?> c){
+        return List.class.isAssignableFrom(c) || List.class.isAssignableFrom(c.getSuperclass());
     }
 }
