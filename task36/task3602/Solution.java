@@ -1,6 +1,7 @@
 package com.javarush.task.task36.task3602;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
@@ -23,11 +24,12 @@ public class Solution {
                     method.setAccessible(true);
                     Constructor<?> constructor = c.getDeclaredConstructor();
                     constructor.setAccessible(true);
-
+                    method.invoke(constructor.newInstance(),"Hello");
                 }
-
-            }catch (NullPointerException | NoSuchMethodException e) {
-                System.err.println(e.getMessage());
+            }catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                e.printStackTrace();
+            }catch (IndexOutOfBoundsException e){
+                return c;
             }
         }
         return null;
