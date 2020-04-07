@@ -1,5 +1,6 @@
 package com.javarush.task.task36.task3602;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
@@ -20,6 +21,8 @@ public class Solution {
                 if (Modifier.isStatic(c.getModifiers()) && Modifier.isPrivate(c.getModifiers())){
                     Method method = c.getMethod("get");
                     method.setAccessible(true);
+                    Constructor<?> constructor = c.getDeclaredConstructor();
+                    constructor.setAccessible(true);
 
                 }
 
