@@ -1,5 +1,7 @@
 package com.javarush.task.task36.task3602;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Collections;
 
 /*
@@ -15,8 +17,13 @@ public class Solution {
 
         for (Class<?> c : classes) {
             try{
+                if (Modifier.isStatic(c.getModifiers()) && Modifier.isPrivate(c.getModifiers())){
+                    Method method = c.getMethod("get");
+                    method.setAccessible(true);
 
-            }catch (NullPointerException e) {
+                }
+
+            }catch (NullPointerException | NoSuchMethodException e) {
                 System.err.println(e.getMessage());
             }
         }
