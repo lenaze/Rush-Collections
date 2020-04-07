@@ -16,7 +16,7 @@ public class Solution {
         list.remove("B");
         List<String> collection = Arrays.asList(new String[]{"B", "C", "D", "B"});
 
-        list.methodNameToBeReplaced(collection);
+        list.addAllAbsent(collection);
 
         for (String string : list) {
             System.out.println(string);
