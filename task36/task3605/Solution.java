@@ -3,6 +3,7 @@ package com.javarush.task.task36.task3605;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 /* 
 Использование TreeSet
@@ -12,11 +13,13 @@ public class Solution {
         File file = new File(args[0]);
         InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
 
-        List<Character> list = new ArrayList<>();
+        TreeSet<Character> set = new TreeSet<>();
         while(reader.ready()){
-            list.add((char) reader.read());
+            set.add((char) reader.read());
         }
         reader.close();
+
+
 
 
     }
