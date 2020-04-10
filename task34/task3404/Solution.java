@@ -1,13 +1,6 @@
 package com.javarush.task.task34.task3404;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/*
+/* 
 Рекурсия для мат. выражения
 */
 public class Solution {
@@ -17,10 +10,11 @@ public class Solution {
     }
 
     public void recurse(final String expression, int countOperation) {
-
+        //implement
     }
 
     public Solution() {
         //don't delete
+
     }
 }
