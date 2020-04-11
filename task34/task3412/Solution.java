@@ -28,7 +28,7 @@ public class Solution {
     }
 
     public void calculateAndSetValue3(long value) {
-       logger.trace("Вход в метод calculateAndSetValue3"); //trace_1
+       //logger.trace("Вход в метод calculateAndSetValue3"); //trace_1
         value -= 133;
         if (value > Integer.MAX_VALUE) {
             value1 = (int) (value / Integer.MAX_VALUE);
@@ -40,21 +40,21 @@ public class Solution {
     }
 
     public void printString() {
-       logger.trace("Вход в метод printString"); //trace_2
+       //logger.trace("Вход в метод printString"); //trace_2
         if (value2 != null) {
             System.out.println(value2.length());
         }
     }
 
     public void printDateAsLong() {
-        logger.trace("Вход в метод printDateAsLong"); //trace_3
+        //logger.trace("Вход в метод printDateAsLong"); //trace_3
         if (value3 != null) {
             System.out.println(value3.getTime());
         }
     }
 
     public void divide(int number1, int number2) {
-        logger.trace("Вход в метод divide"); //trace_4
+        //logger.trace("Вход в метод divide"); //trace_4
         try {
             System.out.println(number1 / number2);
         } catch (ArithmeticException e) {
